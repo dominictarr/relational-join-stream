@@ -31,10 +31,10 @@ module.exports = function (streams, getKey, map, reduce) {
 
   streams.forEach(function (stream, i) {
     stream.on('data', function (e) {
-      var key = getKey(e)
-      ;(joins[key] = joins[key] || [])[i] = map(e)
+      var key = getKey(e, i)
+      ;(joins[key] = joins[key] || [])[i] = map(e, i)
       if(all(joins[key], streams.length))
-        rs.emit('data', reduce(joins[key]))
+        rs.emit('data', reduce(joins[key], key))
     })
     stream.on('end', function () {
       if((++ ended) !== streams.length) return
