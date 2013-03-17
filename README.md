@@ -6,6 +6,10 @@ A slightly different take to [hash-join](http://github.com/substack/hash-join)
 but the same basic idea.
 
 
+## Stability
+
+Unstable: Expect patches and features, possible api changes.
+
 ## Example
 
 
